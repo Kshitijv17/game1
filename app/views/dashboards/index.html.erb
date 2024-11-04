@@ -1,0 +1,51 @@
+<h1>Dashboard</h1>
+<p> </p>
+
+<p><%= link_to "blink'it", new_user_path %> </p>	 
+
+<% if notice %>
+  <p class="alert alert-success"><%= notice %></p>
+<% end %>
+
+
+<style type="text/css">
+  .alert-success{
+    color: green;
+  }
+</style>
+
+<style type="text/css">
+table {counter-reset: rowNumber;}
+table tr td:first-child::before {
+    counter-increment: rowNumber;
+    content: counter(rowNumber);
+}
+table, th, td{
+    text-align:center;
+  border: 1px solid ;
+}
+</style>
+
+<div>
+<table style="width: 100%">
+    <thead>
+        <tr>
+            <th>id</th>
+            <th>name</th>
+            <th>product</th>
+       
+            </tr>
+    </thead>
+    <tbody>
+        <tr>
+        <% @users.each do |human| %>
+            <td> </td>
+            <td><a href="/users/<%= human.id %>"><%= human.name %></td>
+            <td><a href="/users/<%= human.id %>"><%= human.name %></td>
+        </tr>
+    </tbody>
+    <% end %>
+
+</table>
+</div>
+

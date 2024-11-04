@@ -1,0 +1,31 @@
+<h1>New Blink</h1>
+
+<%= form_with model: @creator do |form| %>
+    <div>
+      <%= form.label :name %><br>
+      <%= form.text_field :name %>
+     </div>
+
+     <div>
+      <%= form.label :email %><br>
+      <%= form.text_field :email %>
+     </div>
+
+     <div>
+     <%= form.label :password %><br>
+     <%= form.text_area :password %>
+     </div>
+
+     
+     <div>
+        <%= form.submit %>
+     </div>
+
+<% end %>
+
+ <%= link_to 'Back to square one', root_path %>
+
+
+
+
+
