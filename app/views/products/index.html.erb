@@ -16,21 +16,29 @@ table, th, td{
         <tr>
         <td>id</td>
         <td>name</td>
+        <td>category</td>
         <td>description</td>
         <td></td>
         <td>order</td>
         </tr>
     </thead>
     <tbody>
+    
+
     <% @sho.each do |table| %>
         <tr>
         <td> <%=table.id %> </td>
         <td> <%=table.name%> </td>
+        <td><%= table.cat.present? ? table.cat.typ : 'N/A' %></td>
         <td> <%=table.description%> </td>
-        <td> <%=table.user_id%> </td>
         <td>  </td>
-        <td></td>
-          
+
+        <td>
+        <%= link_to "Add Order", orders_path(user_id: @user.id, product_id: table.id), data: { turbo_method: :post } %>
+
+        <%# link_to "Add Order", new_order_path(product_id: table.id) %>
+        </td>
+
     
        <% end %>
         </tr>

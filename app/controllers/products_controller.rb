@@ -1,16 +1,19 @@
 class ProductsController < ApplicationController
+    before_action :set_user 
 
-
+    def set_user
+        @user = User.find(params[:user_id]) 
+      end
     
   def index
-      # @order = Order.new
+       @order = Order.new
       @sho = Product.all
-
+    @user
   end
 
   def new
-      @explain = User.find(params[:user_id])
       @gro = Product.new
+      @cat = Cat.all
   end
 
   def show
@@ -23,10 +26,9 @@ class ProductsController < ApplicationController
   end
 
   def create
-      @explain = User.find(params[:user_id])
-      @photosynthesis =  @explain.product.new(product_params)
+      @photosynthesis = Product.new(product_params)
       if @photosynthesis.save
-          redirect_to root_path
+          redirect_to products_path	
       else
           render 'new'
       end
@@ -48,7 +50,7 @@ class ProductsController < ApplicationController
       end
 
       def product_params
-          params.require(:product).permit(:name,:description, :user_id)
+          params.require(:product).permit(:name,:description,:cat_id)
       end
          
 

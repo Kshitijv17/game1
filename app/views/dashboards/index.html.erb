@@ -32,6 +32,7 @@ table, th, td{
         <tr>
             <th>id</th>
             <th>name</th>
+            <th>order</th>
             <th>product</th>
        
             </tr>
@@ -40,8 +41,9 @@ table, th, td{
         <tr>
         <% @users.each do |human| %>
             <td> </td>
-            <td><a href="/users/<%= human.id %>"><%= human.name %></td>
-            <td><a href="/users/<%= human.id %>"><%= human.name %></td>
+            <td><%= link_to human.name, profile_path(human.id) %></td>
+            <td><%= link_to "show order", user_path(human.id) %></td>
+            <td><%=link_to "store for you", user_products_path(human.id)	%></td>
         </tr>
     </tbody>
     <% end %>

@@ -3,7 +3,7 @@ class CreateProducts < ActiveRecord::Migration[7.2]
     create_table :products do |t|
       t.string :name
       t.string :description
-      t.references :user, foreign_key: true
+      t.references :cat, foreign_key: true
 
       t.timestamps
     end

@@ -1,7 +1,15 @@
 class User < ApplicationRecord
     after_create :log_new_user
   
-    has_many :products
+   
+    #has_many
+    has_many :orders
+    has_many :products, through: :orders 
+
+    #has_one
+    has_one :profile
+
+
       validates :name, presence: true
 
     private
